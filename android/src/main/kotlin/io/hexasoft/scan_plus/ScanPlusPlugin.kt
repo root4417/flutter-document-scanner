@@ -1,4 +1,4 @@
-package io.hexasoft.flutter_document_scanner
+package io.hexasoft.scan_plus
 
 import androidx.annotation.NonNull
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -39,7 +39,7 @@ import androidx.core.content.FileProvider
 
 
 /** FlutterDocumentScannerPlugin */
-class FlutterDocumentScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, PluginRegistry.ActivityResultListener {
+class ScanPlusPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, PluginRegistry.ActivityResultListener {
     /// The MethodChannel that will the communication between Flutter and native Android
     ///
     /// This local reference serves to register the plugin with the Flutter Engine and unregister it
@@ -69,8 +69,8 @@ class FlutterDocumentScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityA
             fileProviderAuthority = getFileProviderAuthority(applicationContext)
             println("fileProviderAuthority: $fileProviderAuthority")
             if(fileProviderAuthority != null){
-                print("Channel Initialized for FlutterDocumentScanner")
-                channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter_document_scanner")
+                print("Channel Initialized for ScanPlusPlugin")
+                channel = MethodChannel(flutterPluginBinding.binaryMessenger, "scan_plus")
                 channel.setMethodCallHandler(this)
             }else{
                 throw RuntimeException("FileProvider authority is not set. Please configure the authority value in your AndroidManifest.xml.")

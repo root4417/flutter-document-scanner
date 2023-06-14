@@ -1,8 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'dart:io';
-import 'package:flutter_document_scanner/configs/configs.dart';
-import 'package:flutter_document_scanner/screens/photo_viewer.dart';
+import 'package:scan_plus/configs/configs.dart';
+import 'package:scan_plus/screens/photo_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:path_provider/path_provider.dart';

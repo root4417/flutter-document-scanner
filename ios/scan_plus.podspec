@@ -1,13 +1,13 @@
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
-# Run `pod lib lint flutter_document_scanner.podspec` to validate before publishing.
+# Run `pod lib lint scan_plus.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'flutter_document_scanner'
+  s.name             = 'scan_plus'
   s.version          = '0.0.1'
-  s.summary          = 'Flutter Document Scanner'
+  s.summary          = 'Scan Plus'
   s.description      = <<-DESC
-Flutter Document Scanner
+Scan Plus
                        DESC
   s.homepage         = 'https://hexasoft.io'
   s.license          = { :file => '../LICENSE' }

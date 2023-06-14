@@ -2,7 +2,7 @@ import Flutter
 import UIKit
 import WeScan
 
-public class FlutterDocumentScannerPlugin: NSObject, FlutterPlugin {
+public class SwiftScanPlusPlugin: NSObject, FlutterPlugin {
     var rootViewController: UIViewController?
     var result: FlutterResult?
 
@@ -12,8 +12,8 @@ public class FlutterDocumentScannerPlugin: NSObject, FlutterPlugin {
         rootViewController = (UIApplication.shared.delegate?.window??.rootViewController)!;
     }
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "flutter_document_scanner", binaryMessenger: registrar.messenger())
-        let instance = FlutterDocumentScannerPlugin()
+        let channel = FlutterMethodChannel(name: Utils.channelName, binaryMessenger: registrar.messenger())
+        let instance = SwiftScanPlusPlugin()
         registrar.addMethodCallDelegate(instance, channel: channel)
     }
 
@@ -23,6 +23,7 @@ public class FlutterDocumentScannerPlugin: NSObject, FlutterPlugin {
         var channelMethods : Dictionary = [String : channelMethod]()
         channelMethods["camera"] = camera
         channelMethods["gallery"] = gallery
+        channelMethods["getPlatformVersion"] = getPlatformVersion
         if(!channelMethods.keys.contains(call.method)){
           result(FlutterMethodNotImplemented)
         }
@@ -43,7 +44,11 @@ public class FlutterDocumentScannerPlugin: NSObject, FlutterPlugin {
         rootViewController?.present(scannerViewController, animated:true, completion:nil)
     }
 
-    func gallery() {
+    private func getPlatformVersion(){
+        result?("iOS " + UIDevice.current.systemVersion)
+    }
+
+    private func gallery() {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
@@ -53,7 +58,7 @@ public class FlutterDocumentScannerPlugin: NSObject, FlutterPlugin {
     }
 }
 
-extension SwiftDocumentScannerFlutterPlugin : ImageScannerControllerDelegate{
+extension SwiftScanPlusPlugin : ImageScannerControllerDelegate{
 
     public func imageScannerController(_ scanner: ImageScannerController, didFinishScanningWithResults results: ImageScannerResults) {
         scanner.dismiss(animated: true)
@@ -70,7 +75,7 @@ extension SwiftDocumentScannerFlutterPlugin : ImageScannerControllerDelegate{
     }
 }
 
-extension SwiftDocumentScannerFlutterPlugin: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension SwiftScanPlusPlugin: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }

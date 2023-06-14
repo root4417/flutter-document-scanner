@@ -3,8 +3,8 @@ import 'package:advance_pdf_viewer_fork/advance_pdf_viewer_fork.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
-import 'package:flutter_document_scanner/flutter_document_scanner.dart';
-import 'package:flutter_document_scanner/configs/configs.dart';
+import 'package:scan_plus/configs/configs.dart';
+import 'package:scan_plus/scan_plus.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,8 +35,7 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion =
-          await FlutterDocumentScanner.getPlatformVersion() ?? 'Unknown platform version';
+      platformVersion = await ScanPlusDocumentScanner.getPlatformVersion() ?? 'Unknown platform version';
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
@@ -53,7 +52,7 @@ class _MyAppState extends State<MyApp> {
 
 
   openPdfScanner(BuildContext context) async {
-    var doc = await FlutterDocumentScanner.launchForPdf(
+    var doc = await ScanPlusDocumentScanner.launchForPdf(
       context,
       labelsConfig: {
         ScannerLabelsConfig.ANDROID_NEXT_BUTTON_LABEL: "Next Steps",
@@ -74,7 +73,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   openImageScanner(BuildContext context) async {
-    var image = await FlutterDocumentScanner.launch(context,
+    var image = await ScanPlusDocumentScanner.launch(context,
         //source: ScannerFileSource.CAMERA,
         labelsConfig: {
           ScannerLabelsConfig.ANDROID_NEXT_BUTTON_LABEL: "Next Step",
@@ -91,7 +90,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Document Scanner Demo'),
+          title: const Text('Scan Plus Demo'),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,

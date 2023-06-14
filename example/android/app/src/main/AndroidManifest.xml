@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.hexasoft.flutter_document_scanner_example" xmlns:tools="http://schemas.android.com/tools">
+    package="io.hexasoft.scan_plus_example" xmlns:tools="http://schemas.android.com/tools">
    <application
-        android:label="flutter_document_scanner_example"
+        android:label="scan_plus_example"
         android:largeHeap="true"
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher">

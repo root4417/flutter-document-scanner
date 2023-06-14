@@ -1,6 +1,6 @@
 //
 //  Utils.swift
-//  flutter_document_scanner
+//  scan_plus
 //
 //  Created by Muhammad Arshad on 11/06/2023.
 //
@@ -10,7 +10,7 @@ import WeScan
 
 class Utils {
     
-    static var channelName:String = "flutter_document_scanner"
+    static var channelName:String = "scan_plus"
     
     static func getScannedFile(results: ImageScannerResults) -> String? {
         var path: String?

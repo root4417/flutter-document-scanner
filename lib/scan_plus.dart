@@ -1,18 +1,18 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_document_scanner/screens/pdf_generator_gallery.dart';
+import 'package:scan_plus/scan_plus_platform_interface.dart';
+import 'package:scan_plus/screens/pdf_generator_gallery.dart';
 import 'package:flutter/material.dart';
 import 'configs/configs.dart';
-import 'flutter_document_scanner_platform_interface.dart';
 
-class FlutterDocumentScanner {
+class ScanPlusDocumentScanner {
 
 
-  static MethodChannel get _channel => const MethodChannel('flutter_document_scanner');
+  static MethodChannel get _channel => const MethodChannel('scan_plus');
 
   static Future<String?> getPlatformVersion() {
-    return FlutterDocumentScannerPlatform.instance.getPlatformVersion();
+    return ScanPlusDocumentScannerPlatform.instance.getPlatformVersion();
   }
 
 

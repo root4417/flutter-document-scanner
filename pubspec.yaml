@@ -1,5 +1,5 @@
-name: flutter_document_scanner
-description: Flutter Document Scanner
+name: scan_plus
+description: ScanPro is a Document Scanner Plugin with advance features.
 version: 0.0.1
 homepage: https://hexasoft.io
 
@@ -40,10 +40,10 @@ flutter:
   plugin:
     platforms:
       android:
-        package: io.hexasoft.flutter_document_scanner
-        pluginClass: FlutterDocumentScannerPlugin
+        package: io.hexasoft.scan_plus
+        pluginClass: ScanPlusPlugin
       ios:
-        pluginClass: FlutterDocumentScannerPlugin
+        pluginClass: ScanPlusPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

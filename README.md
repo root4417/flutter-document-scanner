@@ -1,6 +1,6 @@
 # flutter_document_scanner
 
-Flutter Document Scanner
+Scan Plus
 
 ## Getting Started
 

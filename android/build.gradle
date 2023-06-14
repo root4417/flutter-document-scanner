@@ -1,4 +1,4 @@
-group 'io.hexasoft.flutter_document_scanner'
+group 'io.hexasoft.scan_plus'
 version '1.0.0'
 
 buildscript {
