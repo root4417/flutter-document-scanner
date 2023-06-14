@@ -62,22 +62,10 @@ class ScanPlusPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, PluginRe
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
 
         applicationContext = flutterPluginBinding.applicationContext
+        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "scan_plus")
+        channel.setMethodCallHandler(this)
         // Check if FileProvider authority is set
-        val isAuthoritySet = isFileProviderAuthoritySet(applicationContext)
-        println("isAuthoritySet: $isAuthoritySet")
-        if (isAuthoritySet) {
-            fileProviderAuthority = getFileProviderAuthority(applicationContext)
-            println("fileProviderAuthority: $fileProviderAuthority")
-            if(fileProviderAuthority != null){
-                print("Channel Initialized for ScanPlusPlugin")
-                channel = MethodChannel(flutterPluginBinding.binaryMessenger, "scan_plus")
-                channel.setMethodCallHandler(this)
-            }else{
-                throw RuntimeException("FileProvider authority is not set. Please configure the authority value in your AndroidManifest.xml.")
-            }
-        } else {
-            throw RuntimeException("FileProvider authority is not set. Please configure the authority value in your AndroidManifest.xml.")
-        }
+
 
     }
     private fun isFileProviderAuthoritySet(context: Context): Boolean {
@@ -122,9 +110,37 @@ class ScanPlusPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, PluginRe
         if (call.method == "getPlatformVersion") {
             result.success("Android ${android.os.Build.VERSION.RELEASE}")
         } else if (call.method == "camera") {
-            camera();
+            val isAuthoritySet = isFileProviderAuthoritySet(applicationContext)
+            println("isAuthoritySet: $isAuthoritySet")
+            if (isAuthoritySet) {
+                fileProviderAuthority = getFileProviderAuthority(applicationContext)
+                println("fileProviderAuthority: $fileProviderAuthority")
+                if(fileProviderAuthority != null){
+                    print("Channel Initialized for ScanPlusPlugin")
+                    camera();
+                }else{
+                    throw RuntimeException("FileProvider authority is not set. Please configure the authority value in your AndroidManifest.xml.")
+                }
+            } else {
+                throw RuntimeException("FileProvider authority is not set. Please configure the authority value in your AndroidManifest.xml.")
+            }
+
         } else if (call.method == "gallery") {
-            gallery();
+            val isAuthoritySet = isFileProviderAuthoritySet(applicationContext)
+            println("isAuthoritySet: $isAuthoritySet")
+            if (isAuthoritySet) {
+                fileProviderAuthority = getFileProviderAuthority(applicationContext)
+                println("fileProviderAuthority: $fileProviderAuthority")
+                if(fileProviderAuthority != null){
+                    print("Channel Initialized for ScanPlusPlugin")
+                    gallery();
+                }else{
+                    throw RuntimeException("FileProvider authority is not set. Please configure the authority value in your AndroidManifest.xml.")
+                }
+            } else {
+                throw RuntimeException("FileProvider authority is not set. Please configure the authority value in your AndroidManifest.xml.")
+            }
+
         } else {
             result.notImplemented()
         }
