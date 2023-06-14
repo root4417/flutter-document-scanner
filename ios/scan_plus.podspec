@@ -6,9 +6,7 @@ Pod::Spec.new do |s|
   s.name             = 'scan_plus'
   s.version          = '0.0.1'
   s.summary          = 'Scan Plus'
-  s.description      = <<-DESC
-Scan Plus
-                       DESC
+  s.description      = 'Scan Plus is a flutter document scanner plugin'
   s.homepage         = 'https://hexasoft.io'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'HEXASOFT' => 'arshad@hexasoft.io' }

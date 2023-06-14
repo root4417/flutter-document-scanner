@@ -27,9 +27,7 @@ public class SwiftScanPlusPlugin: NSObject, FlutterPlugin {
         if(!channelMethods.keys.contains(call.method)){
           result(FlutterMethodNotImplemented)
         }
-
-        //     channelMethods[call.method]!();
-        //     result("iOS " + UIDevice.current.systemVersion)
+        channelMethods[call.method]!();
     }
 
     private func camera() {

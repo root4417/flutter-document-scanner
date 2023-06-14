@@ -1,6 +1,6 @@
 name: scan_plus
 description: Scan Plus is a Document Scanner Plugin with advance features.
-version: 0.0.3
+version: 0.0.4
 homepage: https://hexasoft.io
 
 environment:
