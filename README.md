@@ -1,4 +1,4 @@
-# flutter_document_scanner
+# scan_plus
 
 Scan Plus
 
